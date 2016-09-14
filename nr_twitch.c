@@ -51,7 +51,10 @@ void nr_twitch_read(nr_twitch_ctx *ctx) {
 }
 
 int nr_twitch_send(nr_twitch_ctx *ctx, char *buffer) {
-    return nr_socket_send(ctx->sock, concat(buffer, "\n"), strlen(buffer)+1);
+    char *tosend = concat(buffer, "\n");
+    int result = nr_socket_send(ctx->sock, tosend, strlen(tosend));
+    free(tosend);
+    return result;
 }
 
 void nr_twitch_join_channel(nr_twitch_ctx *ctx, char *channel) {
@@ -117,5 +120,4 @@ void data_handler(nr_twitch_ctx *ctx, char *data) {
             ((void(*)(nr_twitch_ctx *, char *))(&ctx->handlers)->headers[index].value)(ctx, data);
         }
     }
-    //printf("\nRECV\n%s\nEND RECV\n", data);
 }

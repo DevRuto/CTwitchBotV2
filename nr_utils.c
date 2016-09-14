@@ -2,9 +2,9 @@
 // Created by Ruto on 9/11/2016.
 //
 
-#include <mem.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include <ctype.h>
 #include "nr_utils.h"
 
@@ -51,5 +51,6 @@ char *strtolower(char *str) {
 }
 
 bool strequals(char *str1, char *str2) {
+    if (str1 == NULL || str2 == NULL) return false;
     return strcmp(str1, str2) == 0;
 }
