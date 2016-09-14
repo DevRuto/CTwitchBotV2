@@ -27,7 +27,7 @@ int main() {
 
 void login_success(nr_twitch_ctx *ctx) {
     puts("LOGIN SUCCESS");
-    nr_twitch_join_channel(ctx, "summit1g");
+    nr_twitch_join_channel(ctx, "nullruto"); // Use popular channels for easily test mass spam of messages
 }
 
 void message_handler(nr_twitch_ctx *ctx, char *data) {
